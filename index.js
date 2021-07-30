@@ -3,37 +3,33 @@ const serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
-const firestore = admin.firestore();
-
-firestore.collection('notifications').where('date', '==', Date()).get().then(snapshot => {
-  
-})
 
 const tokens = [
-  // "eyIq9Fl9TLabgoi7Ky6Nf_:APA91bGuO5d4oG4g5P_zXda4_3tsd7Y8anYmDP5ICWmzSBNFRU1cD4xJbVLLJXKBXtyuv-oPl4BSz_i7uk1Me8m-kZJ31FeWEnaurG9ct0m6W1cuyx5ySiwYD1dr5kRwS8zJEB1TLaBi",
-  "d3ICU6o8RM-Jp9BcoXl7x0:APA91bF45UBAX9AnpI1tzrUxgq5PDwnpFRW-kKX2AG8-CMFoqKeadxnkCi1u5Nn93HzgI--Y6H-u8tEwFsZFC4GkiHZkUUHdnRHvT2imjez5gPcNPdz8wTikyu23Zy-fcYavsRahkPKw",
-  "fn2aSuvWTqqV_R53lIhFdN:APA91bGRHPKiA8rg1xVSdZMT-lgyOiDQOsW4O2ePyb8ECcIy5t913lmmEvB3wf6aiQ9u3XUmAlTRxjMpOIKtpFmiMCmmpgj9XZFYEhdlX1jXD0-1S0TB_EBW6Cp5rRtxG5PzViXtWBGN",
-  "fmSTO8vnRGmd1MNMwWX_ds:APA91bFg3ElIMKUH36JYxMob1ujkwUGozuNaB08Ge9mOAeNaK5uUrqFZa4JR6yrajW0eRhpsNsAyKjxEKAy-pYORAzFayYBXgLAsOrmQg2XTI6kYZIaMorMX7xMlx-HlCdJksLCr4MzL",
-  "chvVpb8mRXyuE-d17i8GA1:APA91bERfcu8B3pETLAyYlRzb3clxqP90l6TWzNHWUwoI3w9fQwxiMHIq8-onXEh54LOk1G_QdYYyDONwYZiLp9BLvucSARzRNkdQpKWZr1IB-ikA2vHcPZF3CIAlt5RzIBmMBZZqoTy",
+  "cvUk11YpSRaWl1S_74LOP3:APA91bEl9aJKUcYjw42_EfoYLvN1B7JKUqFJfLQGO7SX6iw72x__2NrQtduENMbTsmCrN8BuXaUQLsMT90Mr_dsyTCzG7Osgk6GKcNfaU89gjIv7XGJLqIStTX8AzZ_fRVzgPikqYcm6",
+  "cmahdBUVQmC8vIsJhGe9ee:APA91bG2fx6lJdEvcjBUDKmTVbIpX1QWEC2Qge1E87pENDEeQprnrTZcVCXeOxFo_-E6GUjbX7YVlPoMg-22wJngKkVnFp5cFYCOadIcoja9H-G_nuS91b-86qu24UtM1d4-CiadgXkV",
 ];
 function sendNotification() {
   const payload = {
     notification: {
-      title: "Thầy vinh thèm KFC nha Tú, Nghĩa",
-      body: "Hiếu đã tham gia lớp học",
-      image: "",
-      click_action: 'FLUTTER_NOTIFICATION_CLICK',
+      title: "Title",
+      body: "Body",
+      image: "https://avatars.githubusercontent.com/u/60530946?v=4",
     },
     data: {
-      title: "lambiengcode",
-      tu: 'vinh ne',
-      route: 'home',
+      id: "lambiengco12313de",
+      invitation: "hehe",
+      startTime: "2021-07-30T02:40:38.448Z",
+      avatar: "https://avatars.githubusercontent.com/u/60530946?v=4",
+      route: "conversation",
+      fullname: "Dao Hong Vinh",
+      username: "lambiengcode",
     },
-    // android: {
-    //   notification: {
-    //     channel_id: "cnid",
-    //   },
-    // },
+    android: {
+      notification: {
+        channel_id: "cnid",
+      },
+    },
+    token: tokens[0],
     // apns: {
     //   payload: {
     //     aps: {
@@ -53,7 +49,7 @@ function sendNotification() {
   };
   admin
     .messaging()
-    .sendToTopic('room - idRoomChat', payload)
+    .send(payload)
     .then((response) => {
       console.log("Successfully sent message:", response);
     })
