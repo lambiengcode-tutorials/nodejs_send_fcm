@@ -5,14 +5,14 @@ admin.initializeApp({
 });
 
 const tokens = [
-  "cvUk11YpSRaWl1S_74LOP3:APA91bEl9aJKUcYjw42_EfoYLvN1B7JKUqFJfLQGO7SX6iw72x__2NrQtduENMbTsmCrN8BuXaUQLsMT90Mr_dsyTCzG7Osgk6GKcNfaU89gjIv7XGJLqIStTX8AzZ_fRVzgPikqYcm6",
-  "cmahdBUVQmC8vIsJhGe9ee:APA91bG2fx6lJdEvcjBUDKmTVbIpX1QWEC2Qge1E87pENDEeQprnrTZcVCXeOxFo_-E6GUjbX7YVlPoMg-22wJngKkVnFp5cFYCOadIcoja9H-G_nuS91b-86qu24UtM1d4-CiadgXkV",
+  "dLLcgUNnQ5GzuQx7iZgsK6:APA91bHh1t4VZK_Prl9EHg8Ui1XUybIGepEZfnXdOIcHgu30gK4oeLvlmJu_vK_rnI_eWTRMS0Fp1YGHpgPcPMcvZGkbX_qaRs8SVsA0vX3CvOBHn51p1PwxwWup2PyW-YMh4WhOP2aC",
+  // "cvUk11YpSRaWl1S_74LOP3:APA91bEl9aJKUcYjw42_EfoYLvN1B7JKUqFJfLQGO7SX6iw72x__2NrQtduENMbTsmCrN8BuXaUQLsMT90Mr_dsyTCzG7Osgk6GKcNfaU89gjIv7XGJLqIStTX8AzZ_fRVzgPikqYcm6",
 ];
 function sendNotification() {
   const payload = {
     notification: {
-      title: "Title",
-      body: "Body",
+      title: "Hồng Vinh đã gửi cho bạn một tin nhắn",
+      body: "Im Mobile Developer...",
       image: "https://avatars.githubusercontent.com/u/60530946?v=4",
     },
     data: {
@@ -27,6 +27,7 @@ function sendNotification() {
     android: {
       notification: {
         channel_id: "cnid",
+        // sound: "alarm.mp3"
       },
     },
     token: tokens[0],
